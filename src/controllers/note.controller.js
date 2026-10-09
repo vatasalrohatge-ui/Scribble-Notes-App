@@ -3,6 +3,16 @@ const noteModel = require('../db/models/note.model')
 async function createNote(req,res) {
     try {
         const {heading, content} = req.body;
+        if(!heading){
+            res.status(400).json(){
+                error: "Body Cannot Be Empty"
+            }
+        }
+        if(!content){
+            res.status(400).json(){
+                error: "Body Cannot Be Empty"
+            }
+        }
         const note = await noteModel.create({
             heading: heading,
             content: content
