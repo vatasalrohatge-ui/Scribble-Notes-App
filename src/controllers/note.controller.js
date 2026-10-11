@@ -2,8 +2,9 @@ const noteModel = require('../db/models/note.model')
 
 async function createNote(req,res) {
     try {
-        const {heading, content} = req.body;
+        const {heading, content, name} = req.body;
         const note = await noteModel.create({
+            name: name,
             heading: heading,
             content: content
         })
@@ -19,7 +20,9 @@ async function createNote(req,res) {
 }
 async function getNote(req,res) {
     try{
-        const notes = await noteModel.find();
+        const notes = await noteModel.find(
+            name: name
+        );
         res.status(200).json({
             notes: notes
         })
@@ -29,9 +32,5 @@ async function getNote(req,res) {
         })
     }
 
-}
-async function deleteNote(req,res) {
-    const id = req.body.id;
-    delete await noteModel.findById(id)
 }
 module.exports = {createNote,getNote,deleteNote}
