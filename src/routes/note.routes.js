@@ -3,7 +3,7 @@ const {createNote, getNote, deleteNote} = require("../controllers/note.controlle
 const router = express.Router();
 
 router.post("/create-note", createNote)
-router.get("/get-note", getNote)
-router.delete("/delete-note", deleteNote)
+router.get("/get-note/:name", getNote)
+
 
 module.exports = router
