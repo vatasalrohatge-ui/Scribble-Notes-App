@@ -19,6 +19,7 @@ async function createNote(req,res) {
     }
 }
 async function getNote(req,res) {
+    const name = req.params.name;
     try{
         const notes = await noteModel.find(
             name: name
